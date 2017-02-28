@@ -95,6 +95,10 @@ RSpec.describe AgencyAdminController, type: :controller do
       expect(response).to render_template(partial: 'companies/_companies')
       expect(response).to have_http_status(:success)
     end
+    it 'redirects to root_path and flash[:notice]' do
+          expect(response).to redirect_to(root_path)
+          expect(flash[:notice]).to eq "Current agency cannot be determined"
+    end
   end
 
   describe "XHR GET #job_properties" do
